@@ -1,0 +1,38 @@
+<h2 class="f2">Edit <%= @figure.name %></h2>
+
+<form class="pa4 black-80" action="/figures/<%= @figure.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="measure">
+
+    <label for="figure_name" class="f6 b db mb2"><h4 class="f4">Figure Name</h4></label>
+    <input id="figure_name" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" name="figure[name]" value="<%= @figure.name %>">
+
+    <legend class="fw7 mb2">Edit Titles</legend>
+    <% Title.all.each do |title| %>
+      <div class="flex items-center mb2">
+        <input class="mr2" type="checkbox" id="title_<%= title.id %>" name="figure[title_ids][]" value="<%= title.id %>" <%='checked' if @figure.titles.include?(title) %>>
+        <label for="title_name" class="lh-copy"><%= title.name %></label>
+      </div>
+    <% end %>
+
+    <label for="new_title" class="f6 b db mb2"><h4 class="f4">Create New Title</h4></label>
+    <input id="new_title" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" name="title[name]">
+
+
+    <legend class="fw7 mb2">Edit Landmarks</legend>
+    <% Landmark.all.each do |landmark| %>
+      <div class="flex items-center mb2">
+        <input class="mr2" type="checkbox" id="landmark_<%= landmark.id %>" name="figure[landmark_ids][]" value="<%= landmark.id %>" <%='checked' if @figure.landmarks.include?(landmark) %>>
+        <label for="landmark_name" class="lh-copy"><%= landmark.name %></label>
+      </div>
+    <% end %>
+
+    <label class="f6 b db mb2"><h4 class="f4">Create New Landmark</h4></label>
+    <label for="new_landmark" class="f6 b db mb2">Name</label>
+    <input id="new_landmark" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" name="landmark[name]">
+    <label for="new_landmark_year" class="f6 b db mb2">Year</label>
+    <input id="new_landmark_year" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" name="landmark[year_completed]">
+
+    <input type="submit" value="Edit Figure" class="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink">
+  </div>
+</form>

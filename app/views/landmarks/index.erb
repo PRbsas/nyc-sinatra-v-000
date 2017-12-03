@@ -1,0 +1,9 @@
+<h2 class="f2">Landmarks</h2>
+<% @landmarks.each do |landmark| %>
+  <div class="pa1 lh-copy">
+    <a class="f4 fw6 db black link hover-hot-pink" href="/landmarks/<%= landmark.id %>"><%= "#{landmark.name}  ·  #{landmark.year_completed}" %></a>
+  </div>
+<% end %>
+
+<a class="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink" href="/landmarks/new">Add a Landmark</a>
+<a class="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink" href="/figures">Figures</a>

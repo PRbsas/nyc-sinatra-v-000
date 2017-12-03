@@ -1,0 +1,15 @@
+<h2 class="f2">Edit Landmark: <%= @landmark.name %></h2>
+
+<form class="pa4 black-80" action="/landmarks/<%= @landmark.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="measure">
+
+    <label for="name" class="f6 b db mb2"><h4 class="f4">Name</h4></label>
+    <input id="name" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" name="landmark[name]" value=<%= @landmark.name %>>
+
+    <label for="year_completed" class="f6 b db mb2"><h4 class="f4">Year Completed</h4></label>
+    <input id="year_completed" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" name="landmark[year_completed]" value=<%= @landmark.year_completed %>>
+
+    <input type="submit" value="Edit Landmark" class="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink">
+  </div>
+</form>
